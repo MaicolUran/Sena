@@ -5,15 +5,11 @@ const modeloProductos = require('./src/models/productos.models')
 
 const app = exp();
 
+const enrutador=require('./src/routes/router');
 
-app.get('/Productos', async (req,res)=>{
-    let listaProductos = await modeloProductos.find();
-    if(listaProductos){
-        res.status(200).json(listaProductos)
-    }else{
-        res.status(500).json({error})
-    }
- });
+app.use('/v1',enrutador)
+
+//app.get('/Productos',);
 
 
 
